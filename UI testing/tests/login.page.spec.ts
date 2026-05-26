@@ -84,6 +84,11 @@ test.describe("Login Page — Practice Software Testing", () => {
       page,
       pages,
     }) => {
+      test.skip(
+        !!process.env.CI,
+        "Cloudflare blocks automated login from CI runners",
+      );
+
       await pages.login().login(
         LOGIN_CREDENTIALS.email,
         LOGIN_CREDENTIALS.password,
